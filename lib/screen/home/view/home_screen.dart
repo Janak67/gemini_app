@@ -20,14 +20,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           centerTitle: true,
-          title: const Text('AI'),
+          title: const Text(
+            'AI',
+            style: TextStyle(color: Colors.white),
+          ),
           actions: [
             IconButton(
               onPressed: () {
                 Get.toNamed('like');
               },
-              icon: const Icon(Icons.history),
+              icon: const Icon(
+                Icons.history,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
