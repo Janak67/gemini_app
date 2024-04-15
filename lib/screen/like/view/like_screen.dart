@@ -32,23 +32,32 @@ class _LikeScreenState extends State<LikeScreen> {
               : ListView.builder(
                   itemCount: controller.searchList.length,
                   itemBuilder: (context, index) {
-                    return InkWell(
-                      onLongPress: () {
-                        deleteDialog(context);
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(15),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.red.withOpacity(0.2),
-                                Colors.blue.withOpacity(0.2)
-                              ],
+                    return Column(
+                      children: [
+                        InkWell(
+                          onLongPress: () {
+                            deleteDialog(context, index);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.red.withOpacity(0.2),
+                                    Colors.blue.withOpacity(0.2)
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              '${controller.searchList[index].result}',
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 18),
                             ),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text('${controller.searchList[index].result}'),
-                      ),
+                          ),
+                        ),
+                        const Divider(),
+                      ],
                     );
                   },
                 ),

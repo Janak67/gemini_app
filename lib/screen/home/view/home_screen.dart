@@ -57,6 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     ],
                   ),
+                  if (controller.isLoading.value)
+                    LinearProgressIndicator(
+                      backgroundColor: Colors.grey[300],
+                      valueColor:
+                          const AlwaysStoppedAnimation(Colors.blueAccent),
+                      minHeight: 1.5,
+                    ),
                   const SizedBox(height: 20),
                   controller.homeModel.value == null
                       ? const Text('')
@@ -74,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 '${controller.homeModel.value!.candidates![0].content!.parts![0].text}',
-                                style: const TextStyle(fontSize: 18),
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               Align(
                                 alignment: Alignment.centerRight,

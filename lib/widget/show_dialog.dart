@@ -3,7 +3,7 @@ import 'package:advance_exam/utils/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void deleteDialog(BuildContext context) {
+void deleteDialog(BuildContext context, int index) {
   LikeController controller = Get.put(LikeController());
   showDialog(
     context: context,
@@ -15,7 +15,7 @@ void deleteDialog(BuildContext context) {
             ElevatedButton(
               onPressed: () {
                 DbHelper.dbHelper
-                    .deleteData(id: '${controller.searchList[0].id}');
+                    .deleteData(id: '${controller.searchList[index].id}');
                 controller.getData();
                 Get.back();
                 Get.snackbar('Delete', 'Success',
