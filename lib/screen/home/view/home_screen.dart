@@ -1,6 +1,7 @@
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -38,10 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         suffixIcon: Icon(Icons.search),
                       ),
                     ),
-                    // Text(
-                    //   '${controller.homeModel!.candidates![0].finishReason}',
-                    //   style: const TextStyle(fontSize: 18),
-                    // ),
+                    Obx(
+                      () => controller.homeModel == null
+                          ? const Text('Hello')
+                          : Text(
+                              '${controller.homeModel!.value.candidates![0].content!.parts![0].text}',
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                    ),
                   ],
                 ),
               ),

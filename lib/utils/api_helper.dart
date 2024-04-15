@@ -11,7 +11,6 @@ class ApiHelper {
   Future<HomeModel?> apiCall(String question) async {
     String apiLink =
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDhOaIQKs9nnzdWh7IEpMUQ97vBLQVS6dY";
-    Map<String, String> headers = {"Content-Type": "application/json"};
     final body = jsonEncode({
       "contents": [
         {
@@ -21,10 +20,10 @@ class ApiHelper {
         }
       ]
     });
-    var response =
-        await http.post(Uri.parse(apiLink), headers: headers, body: body);
+    var response = await http.post(Uri.parse(apiLink),
+        headers: {"Content-Type": "application/json"}, body: body);
     if (response.statusCode == 200) {
-      dynamic json = jsonEncode(response.body);
+      dynamic json = jsonDecode(response.body);
       HomeModel? homeModel = HomeModel.mapToModel(json);
       return homeModel;
     }
