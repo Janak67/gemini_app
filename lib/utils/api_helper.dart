@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:advance_exam/screen/home/model/home_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -25,6 +24,7 @@ class ApiHelper {
     if (response.statusCode == 200) {
       dynamic json = jsonDecode(response.body);
       HomeModel? homeModel = HomeModel.mapToModel(json);
+      print('====================$json===========================');
       return homeModel;
     }
     return null;

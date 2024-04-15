@@ -3,11 +3,11 @@ import 'package:advance_exam/utils/api_helper.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  Rx<HomeModel>? homeModel;
+  Rxn<HomeModel> homeModel = Rxn<HomeModel>();
 
   Future<void> getData(String question) async {
     HomeModel? h1 = await ApiHelper.apiHelper.apiCall(question);
-    homeModel!.value = h1!;
+    homeModel.value = h1!;
     update();
   }
 }
