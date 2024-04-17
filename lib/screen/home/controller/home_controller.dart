@@ -1,10 +1,11 @@
 import 'package:advance_exam/screen/home/model/home_model.dart';
 import 'package:advance_exam/utils/api_helper.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   Rxn<HomeModel> homeModel = Rxn<HomeModel>();
-  var isLoading = false.obs;
+  ValueNotifier<bool> isLoading = ValueNotifier(false);
 
   Future<void> getData(String question) async {
     isLoading.value = true;

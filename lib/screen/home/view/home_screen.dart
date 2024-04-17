@@ -2,6 +2,7 @@ import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/model/db_model.dart';
 import 'package:advance_exam/utils/db_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,81 +39,104 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Obx(
-              () => Column(
-                children: [
-                  SearchBar(
-                    controller: txtSearch,
-                    elevation: MaterialStateProperty.all(1),
-                    hintText: 'search...',
-                    trailing: [
-                      IconButton(
-                        onPressed: () {
-                          controller.getData(txtSearch.text);
+        body: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Obx(
+                () => SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ValueListenableBuilder(
+                        valueListenable: controller.isLoading,
+                        builder: (BuildContext context, dynamic value,
+                            Widget? child) {
+                          if (!value) {
+                            return const SizedBox();
+                          }
+                          return const SpinKitThreeBounce(
+                              color: Colors.deepPurple, size: 30);
                         },
-                        icon: const Icon(Icons.search),
-                      )
-                    ],
-                  ),
-                  if (controller.isLoading.value)
-                    LinearProgressIndicator(
-                      backgroundColor: Colors.grey[300],
-                      valueColor:
-                          const AlwaysStoppedAnimation(Colors.blueAccent),
-                      minHeight: 1.5,
-                    ),
-                  const SizedBox(height: 20),
-                  controller.homeModel.value == null
-                      ? const Text('')
-                      : Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.red.withOpacity(0.2),
-                                  Colors.blue.withOpacity(0.2)
+                      ),
+                      controller.homeModel.value == null
+                          ? const Text('')
+                          : Container(
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.red.withOpacity(0.2),
+                                      Colors.blue.withOpacity(0.2)
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    '${controller.homeModel.value!.candidates![0].content!.parts![0].text}',
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ],
                               ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            children: [
-                              Text(
-                                '${controller.homeModel.value!.candidates![0].content!.parts![0].text}',
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: IconButton(
-                                  onPressed: () {
-                                    DbModel dbModel = DbModel(
-                                        result: controller
-                                            .homeModel
-                                            .value!
-                                            .candidates![0]
-                                            .content!
-                                            .parts![0]
-                                            .text);
-                                    DbHelper.dbHelper.insertData(dbModel);
-                                    Get.snackbar('Favorite Data', 'Success',
-                                        duration:
-                                            const Duration(milliseconds: 1500));
-                                  },
-                                  icon: const Icon(Icons.favorite_border),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                ],
+                            ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: SearchBar(
+                  controller: txtSearch,
+                  elevation: MaterialStateProperty.all(1),
+                  hintText: 'search...',
+                  trailing: [
+                    ValueListenableBuilder(
+                      valueListenable: controller.isLoading,
+                      builder:
+                          (BuildContext context, dynamic value, Widget? child) {
+                        if (value) {
+                          return const CircularProgressIndicator(
+                              color: Colors.deepPurple);
+                        }
+                        return InkWell(
+                          onTap: () {
+                            DbModel dbModel = DbModel(result: txtSearch.text);
+                            DbHelper.dbHelper.insertData(dbModel);
+                            controller.getData(txtSearch.text);
+                            txtSearch.clear();
+                          },
+                          child: const Icon(Icons.send,
+                              size: 25, color: Colors.deepPurple),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+// if (controller.isLoading.value)
+//   LinearProgressIndicator(
+//     backgroundColor: Colors.grey[300],
+//     valueColor:
+//         const AlwaysStoppedAnimation(Colors.blueAccent),
+//     minHeight: 5,
+//   ),
+// IconButton(
+//   onPressed: () {
+//     DbModel dbModel = DbModel(result: txtSearch.text);
+//     DbHelper.dbHelper.insertData(dbModel);
+//     controller.getData(txtSearch.text);
+//   },
+//   icon: const Icon(Icons.send),
+// )

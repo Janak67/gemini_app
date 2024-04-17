@@ -33,6 +33,7 @@ class _LikeScreenState extends State<LikeScreen> {
                   itemCount: controller.searchList.length,
                   itemBuilder: (context, index) {
                     return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         InkWell(
                           onLongPress: () {
