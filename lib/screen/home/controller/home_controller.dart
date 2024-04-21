@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   Rxn<HomeModel> homeModel = Rxn<HomeModel>();
   ValueNotifier<bool> isLoading = ValueNotifier(false);
+  Rxn<List<HomeModel>> chatList = Rxn<List<HomeModel>>();
 
   Future<void> getData(String question) async {
     isLoading.value = true;
