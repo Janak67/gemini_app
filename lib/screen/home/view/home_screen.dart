@@ -41,48 +41,46 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Obx(
-                () => SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ValueListenableBuilder(
-                        valueListenable: controller.isLoading,
-                        builder: (BuildContext context, dynamic value,
-                            Widget? child) {
-                          if (!value) {
-                            return const SizedBox();
-                          }
-                          return const SpinKitThreeBounce(
-                              color: Colors.deepPurple, size: 30);
-                        },
-                      ),
-                      controller.homeModel.value == null
-                          ? const Text('')
-                          : Container(
-                              padding: const EdgeInsets.all(15),
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Colors.red.withOpacity(0.2),
-                                      Colors.blue.withOpacity(0.2)
-                                    ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    '${controller.homeModel.value!.candidates![0].content!.parts![0].text}',
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+            Obx(
+              () => SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ListView.builder(
+                      itemCount: controller.chatList.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.red.withOpacity(0.2),
+                                  Colors.blue.withOpacity(0.2)
                                 ],
                               ),
-                            ),
-                    ],
-                  ),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Text(
+                            controller.chatList[index],
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 10),
+                    ValueListenableBuilder(
+                      valueListenable: controller.isLoading,
+                      builder:
+                          (BuildContext context, dynamic value, Widget? child) {
+                        if (!value) {
+                          return const SizedBox();
+                        }
+                        return const SpinKitThreeBounce(
+                            color: Colors.deepPurple, size: 30);
+                      },
+                    ),
+                    const SizedBox(height: 80),
+                  ],
                 ),
               ),
             ),
@@ -104,10 +102,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.deepPurple);
                         }
                         return InkWell(
-                          onTap: () {
+                          onTap: () async {
                             DbModel dbModel = DbModel(result: txtSearch.text);
                             DbHelper.dbHelper.insertData(dbModel);
-                            controller.getData(txtSearch.text);
+                            controller.chatList.add(txtSearch.text);
+                            await controller.getData(txtSearch.text);
                             txtSearch.clear();
                           },
                           child: const Icon(Icons.send,
@@ -125,18 +124,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-// if (controller.isLoading.value)
-//   LinearProgressIndicator(
-//     backgroundColor: Colors.grey[300],
-//     valueColor:
-//         const AlwaysStoppedAnimation(Colors.blueAccent),
-//     minHeight: 5,
-//   ),
-// IconButton(
-//   onPressed: () {
-//     DbModel dbModel = DbModel(result: txtSearch.text);
-//     DbHelper.dbHelper.insertData(dbModel);
-//     controller.getData(txtSearch.text);
-//   },
-//   icon: const Icon(Icons.send),
-// )

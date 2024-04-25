@@ -10,3 +10,13 @@ class RunnerTests: XCTestCase {
   }
 
 }
+/*
+  controller -
+    if  (homeModel.value != null) {
+        chatList.add(homeModel.value!.candidates![0].content!.parts![0].text!);
+        }
+
+  screen -
+    shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+*/

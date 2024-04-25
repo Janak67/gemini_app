@@ -11,3 +11,20 @@ class DbModel {
     );
   }
 }
+/*
+if (controller.isLoading.value)
+  LinearProgressIndicator(
+    backgroundColor: Colors.grey[300],
+    valueColor:
+        const AlwaysStoppedAnimation(Colors.blueAccent),
+    minHeight: 5,
+  ),
+IconButton(
+  onPressed: () {
+    DbModel dbModel = DbModel(result: txtSearch.text);
+    DbHelper.dbHelper.insertData(dbModel);
+    controller.getData(txtSearch.text);
+  },
+  icon: const Icon(Icons.send),
+)
+*/

@@ -37,7 +37,6 @@ class DbHelper {
   Future<void> insertData(DbModel dbModel) async {
     database = await checkDb();
     database!.insert("searchTable", {
-      "id": dbModel.id,
       "result": dbModel.result,
     });
   }

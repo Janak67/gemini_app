@@ -24,7 +24,6 @@ class ApiHelper {
     if (response.statusCode == 200) {
       dynamic json = jsonDecode(response.body);
       HomeModel? homeModel = HomeModel.mapToModel(json);
-      print('====================$json===========================');
       return homeModel;
     }
     return null;
