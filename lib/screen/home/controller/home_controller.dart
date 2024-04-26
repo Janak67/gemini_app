@@ -12,6 +12,7 @@ class HomeController extends GetxController {
     isLoading.value = true;
     HomeModel? h1 = await ApiHelper.apiHelper.apiCall(question);
     homeModel.value = h1!;
+    chatList.add(homeModel.value!.candidates![0].content!.parts![0].text!);
     isLoading.value = false;
   }
 }

@@ -42,10 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Stack(
           children: [
             Obx(
-              () => SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ListView.builder(
+              () => Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
                       itemCount: controller.chatList.length,
                       itemBuilder: (context, index) {
                         return Container(
@@ -67,21 +67,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     ),
-                    const SizedBox(height: 10),
-                    ValueListenableBuilder(
-                      valueListenable: controller.isLoading,
-                      builder:
-                          (BuildContext context, dynamic value, Widget? child) {
-                        if (!value) {
-                          return const SizedBox();
-                        }
-                        return const SpinKitThreeBounce(
-                            color: Colors.deepPurple, size: 30);
-                      },
-                    ),
-                    const SizedBox(height: 80),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 10),
+                  ValueListenableBuilder(
+                    valueListenable: controller.isLoading,
+                    builder:
+                        (BuildContext context, dynamic value, Widget? child) {
+                      if (!value) {
+                        return const SizedBox();
+                      }
+                      return const SpinKitThreeBounce(
+                          color: Colors.deepPurple, size: 30);
+                    },
+                  ),
+                  const SizedBox(height: 80),
+                ],
               ),
             ),
             Align(
