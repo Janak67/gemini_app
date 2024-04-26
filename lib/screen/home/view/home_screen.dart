@@ -15,13 +15,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = Get.put(HomeController());
   TextEditingController txtSearch = TextEditingController();
-  ScrollController sController = ScrollController();
-
-  // void onSubmit()
-  // {
-  //   sController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-  //   txtSearch.text = '';
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 Get.toNamed('like');
               },
-              icon: const Icon(
-                Icons.history,
-                color: Colors.white,
-              ),
+              icon: const Icon(Icons.history, color: Colors.white),
             ),
           ],
         ),
@@ -54,24 +44,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: ListView.builder(
                       reverse: true,
-                      shrinkWrap: false,
                       itemCount: controller.chatList.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.all(8),
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.red.withOpacity(0.2),
-                                  Colors.blue.withOpacity(0.2)
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Text(
-                            controller.chatList[index],
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                        final reversedIndex =
+                            controller.chatList.length - index - 1;
+                        return Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.red.withOpacity(0.2),
+                                    Colors.blue.withOpacity(0.2)
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(
+                              controller.chatList[reversedIndex],
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
                           ),
                         );
                       },
