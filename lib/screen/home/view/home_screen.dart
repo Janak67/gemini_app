@@ -15,6 +15,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = Get.put(HomeController());
   TextEditingController txtSearch = TextEditingController();
+  ScrollController sController = ScrollController();
+
+  // void onSubmit()
+  // {
+  //   sController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+  //   txtSearch.text = '';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Expanded(
                     child: ListView.builder(
+                      reverse: true,
+                      shrinkWrap: false,
                       itemCount: controller.chatList.length,
                       itemBuilder: (context, index) {
                         return Container(
