@@ -44,12 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Expanded(
                     child: ListView.builder(
                       reverse: true,
-                      itemCount: controller.chatList.length,
+                      itemCount: controller.list.length,
                       itemBuilder: (context, index) {
                         final reversedIndex =
-                            controller.chatList.length - index - 1;
+                            controller.list.length - index - 1;
                         return Align(
-                          alignment: Alignment.centerRight,
+                          alignment: controller.list[index].status == 0
+                              ? Alignment.centerLeft
+                              : Alignment.centerRight,
                           child: Container(
                             margin: const EdgeInsets.all(8),
                             padding: const EdgeInsets.all(15),
@@ -62,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text(
-                              controller.chatList[reversedIndex],
+                              '${controller.list[reversedIndex].result}',
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
@@ -91,33 +93,38 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: SearchBar(
-                  controller: txtSearch,
-                  elevation: MaterialStateProperty.all(1),
-                  hintText: 'search...',
-                  trailing: [
-                    ValueListenableBuilder(
-                      valueListenable: controller.isLoading,
-                      builder:
-                          (BuildContext context, dynamic value, Widget? child) {
-                        if (value) {
-                          return const CircularProgressIndicator(
-                              color: Colors.deepPurple);
-                        }
-                        return InkWell(
-                          onTap: () async {
-                            DbModel dbModel = DbModel(result: txtSearch.text);
-                            DbHelper.dbHelper.insertData(dbModel);
-                            controller.chatList.add(txtSearch.text);
-                            await controller.getData(txtSearch.text);
-                            txtSearch.clear();
-                          },
-                          child: const Icon(Icons.send,
-                              size: 25, color: Colors.deepPurple),
-                        );
-                      },
-                    ),
-                  ],
+                child: SizedBox(
+                  height: 50,
+                  child: SearchBar(
+                    controller: txtSearch,
+                    elevation: MaterialStateProperty.all(1),
+                    hintText: 'search...',
+                    trailing: [
+                      ValueListenableBuilder(
+                        valueListenable: controller.isLoading,
+                        builder: (BuildContext context, dynamic value,
+                            Widget? child) {
+                          if (value) {
+                            return const SpinKitFadingCircle(
+                                size: 30, color: Colors.deepPurple);
+                          }
+                          return InkWell(
+                            onTap: () async {
+                              DbModel dbModel =
+                                  DbModel(result: txtSearch.text, status: 0);
+                              DbHelper.dbHelper.insertData(dbModel);
+                              controller.chatList.add(dbModel);
+                              controller.list.add(dbModel);
+                              await controller.getData(txtSearch.text);
+                              txtSearch.clear();
+                            },
+                            child: const Icon(Icons.send,
+                                size: 25, color: Colors.deepPurple),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

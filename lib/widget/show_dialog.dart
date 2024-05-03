@@ -1,10 +1,12 @@
+import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
 import 'package:advance_exam/utils/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void deleteDialog(BuildContext context, int index) {
-  LikeController controller = Get.put(LikeController());
+  HomeController controller = Get.put(HomeController());
+  LikeController likeController = Get.put(LikeController());
   showDialog(
     context: context,
     builder: (context) {
@@ -19,8 +21,8 @@ void deleteDialog(BuildContext context, int index) {
                 ElevatedButton(
                   onPressed: () {
                     DbHelper.dbHelper
-                        .deleteData(id: '${controller.searchList[index].id}');
-                    controller.getData();
+                        .deleteData(id: '${controller.chatList[index].id}');
+                    controller.initData();
                     Get.back();
                     Get.snackbar('Delete', 'Success',
                         duration: const Duration(milliseconds: 1000));
@@ -45,8 +47,8 @@ void deleteDialog(BuildContext context, int index) {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    controller.copyToClipboard(
-                        '${controller.searchList[index].result}');
+                    likeController.copyToClipboard(
+                        '${controller.chatList[index].result}');
                     Get.back();
                   },
                   child: const Text('Copy'),

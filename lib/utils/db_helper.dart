@@ -28,7 +28,7 @@ class DbHelper {
       version: 1,
       onCreate: (db, version) {
         String chatGpt =
-            "CREATE TABLE searchTable(id INTEGER PRIMARY KEY AUTOINCREMENT,result TEXT)";
+            "CREATE TABLE searchTable(id INTEGER PRIMARY KEY AUTOINCREMENT,result TEXT,status INTEGER)";
         db.execute(chatGpt);
       },
     );
@@ -38,6 +38,7 @@ class DbHelper {
     database = await checkDb();
     database!.insert("searchTable", {
       "result": dbModel.result,
+      "status": dbModel.status,
     });
   }
 

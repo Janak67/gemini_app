@@ -1,3 +1,4 @@
+import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
 import 'package:advance_exam/widget/show_dialog.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,12 @@ class LikeScreen extends StatefulWidget {
 }
 
 class _LikeScreenState extends State<LikeScreen> {
-  LikeController controller = Get.put(LikeController());
+  HomeController controller = Get.put(HomeController());
 
   @override
   void initState() {
     super.initState();
-    controller.getData();
+    controller.initData();
   }
 
   @override
@@ -27,10 +28,10 @@ class _LikeScreenState extends State<LikeScreen> {
           title: const Text('Favorite'),
         ),
         body: Obx(
-          () => controller.searchList.isEmpty
+          () => controller.chatList.isEmpty
               ? const Center(child: Text('No Data'))
               : ListView.builder(
-                  itemCount: controller.searchList.length,
+                  itemCount: controller.chatList.length,
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +52,7 @@ class _LikeScreenState extends State<LikeScreen> {
                                 ),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text(
-                              '${controller.searchList[index].result}',
+                              '${controller.chatList[index].result}',
                               style: const TextStyle(
                                   color: Colors.black, fontSize: 18),
                             ),
