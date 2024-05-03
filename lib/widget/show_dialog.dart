@@ -22,7 +22,7 @@ void deleteDialog(BuildContext context, int index) {
                   onPressed: () {
                     DbHelper.dbHelper
                         .deleteData(id: '${controller.chatList[index].id}');
-                    controller.initData();
+                    controller.dbData();
                     Get.back();
                     Get.snackbar('Delete', 'Success',
                         duration: const Duration(milliseconds: 1000));
@@ -31,9 +31,7 @@ void deleteDialog(BuildContext context, int index) {
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () {
-                    Get.back();
-                  },
+                  onPressed: () => Get.back(),
                   child: const Text('No'),
                 ),
               ],

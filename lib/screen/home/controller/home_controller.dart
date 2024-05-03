@@ -26,7 +26,7 @@ class HomeController extends GetxController {
     isLoading.value = false;
   }
 
-  void initData() async {
+  void dbData() async {
     chatList.value = await DbHelper.dbHelper.readData();
     // List<DbModel> favorite = await DbHelper.dbHelper.readData();
     // searchList.value = favorite;

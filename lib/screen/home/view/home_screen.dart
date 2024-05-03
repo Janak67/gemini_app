@@ -29,15 +29,18 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {
-                Get.toNamed('like');
-              },
+              onPressed: () => Get.toNamed('like'),
               icon: const Icon(Icons.history, color: Colors.white),
             ),
           ],
         ),
         body: Stack(
           children: [
+            Image.asset('assets/img/background.jpg',
+                height: MediaQuery.sizeOf(context).height,
+                fit: BoxFit.cover,
+                width: MediaQuery.sizeOf(context).width,
+                opacity: const AlwaysStoppedAnimation(0.6)),
             Obx(
               () => Column(
                 children: [
@@ -94,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: SizedBox(
-                  height: 50,
+                  height: 55,
                   child: SearchBar(
                     controller: txtSearch,
                     elevation: MaterialStateProperty.all(1),
