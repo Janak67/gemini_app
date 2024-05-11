@@ -24,6 +24,10 @@ class HomeController extends GetxController {
     chatList.value = await DbHelper.dbHelper.readData();
     // chatList.add(homeModel.value!.candidates![0].content!.parts![0].text!);
     isLoading.value = false;
+
+    list.value
+        .map((element) => print("${element.result} ${element.status}"))
+        .toList();
   }
 
   void dbData() async {

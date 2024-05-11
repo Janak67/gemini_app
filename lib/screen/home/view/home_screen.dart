@@ -59,17 +59,29 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: const EdgeInsets.all(8),
                             padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.red.withOpacity(0.2),
-                                    Colors.blue.withOpacity(0.2)
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(10)),
+                              color: controller.list[index].status == 0
+                                  ? const Color(0xff141E46)
+                                  : const Color(0xffEFFFFB),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: const Radius.circular(15),
+                                  topRight: const Radius.circular(15),
+                                  bottomLeft: Radius.circular(
+                                      controller.list[index].status == 0
+                                          ? 15
+                                          : 0),
+                                  bottomRight: Radius.circular(
+                                      controller.list[index].status == 0
+                                          ? 0
+                                          : 15)),
+                            ),
                             child: Text(
                               '${controller.list[reversedIndex].result}',
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: controller.list[index].status == 0
+                                      ? Colors.white
+                                      : Colors.black),
                             ),
                           ),
                         );
