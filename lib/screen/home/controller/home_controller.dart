@@ -1,7 +1,7 @@
 import 'package:advance_exam/screen/home/model/home_model.dart';
 import 'package:advance_exam/screen/like/model/db_model.dart';
-import 'package:advance_exam/utils/api_helper.dart';
-import 'package:advance_exam/utils/db_helper.dart';
+import 'package:advance_exam/utils/helper/api_helper.dart';
+import 'package:advance_exam/utils/helper/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,6 +1,6 @@
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/model/db_model.dart';
-import 'package:advance_exam/utils/db_helper.dart';
+import 'package:advance_exam/utils/helper/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -21,16 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
-          centerTitle: true,
-          title: const Text(
-            'AI',
-            style: TextStyle(color: Colors.white),
-          ),
+          title: const Text('Gemini AI'),
           actions: [
             IconButton(
               onPressed: () => Get.toNamed('like'),
-              icon: const Icon(Icons.history, color: Colors.white),
+              icon: const Icon(Icons.history),
             ),
           ],
         ),

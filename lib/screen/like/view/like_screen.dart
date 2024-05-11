@@ -1,7 +1,10 @@
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
+import 'package:advance_exam/screen/like/controller/like_controller.dart';
+import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:advance_exam/widget/show_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});
@@ -12,6 +15,7 @@ class LikeScreen extends StatefulWidget {
 
 class _LikeScreenState extends State<LikeScreen> {
   HomeController controller = Get.put(HomeController());
+  LikeController likeController = Get.put(LikeController());
 
   @override
   void initState() {
@@ -25,6 +29,18 @@ class _LikeScreenState extends State<LikeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Favorite'),
+          actions: [
+            Obx(
+              () => Switch(
+                value: likeController.isLight.value,
+                onChanged: (value) {
+                  ShareHelper shr = ShareHelper();
+                  shr.setTheme(value);
+                  likeController.changeTheme();
+                },
+              ),
+            )
+          ],
         ),
         body: Obx(
           () => controller.chatList.isEmpty
@@ -52,7 +68,9 @@ class _LikeScreenState extends State<LikeScreen> {
                           child: Text(
                             '${controller.chatList[index].result}',
                             style: const TextStyle(
-                                color: Colors.black, fontSize: 18),
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
