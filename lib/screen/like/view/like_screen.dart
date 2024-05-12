@@ -1,10 +1,8 @@
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:advance_exam/widget/show_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});
@@ -29,54 +27,70 @@ class _LikeScreenState extends State<LikeScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Favorite'),
-          actions: [
-            Obx(
-              () => Switch(
-                value: likeController.isLight.value,
-                onChanged: (value) {
-                  ShareHelper shr = ShareHelper();
-                  shr.setTheme(value);
-                  likeController.changeTheme();
-                },
-              ),
-            )
-          ],
         ),
-        body: Obx(
-          () => controller.chatList.isEmpty
-              ? const Center(child: Text('No Data'))
-              : ListView.builder(
-                  itemCount: controller.chatList.length,
-                  itemBuilder: (context, index) {
-                    return Align(
-                      alignment: controller.chatList[index].status == 0
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: InkWell(
-                        onLongPress: () => deleteDialog(context, index),
-                        child: Container(
-                          padding: const EdgeInsets.all(15),
-                          margin: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.red.withOpacity(0.2),
-                                  Colors.blue.withOpacity(0.2)
-                                ],
+        body: Stack(
+          children: [
+            Obx(
+              () => likeController.isLight.value == false
+                  ? Image.asset('assets/img/chat.jpg',
+                      height: MediaQuery.sizeOf(context).height,
+                      fit: BoxFit.cover,
+                      width: MediaQuery.sizeOf(context).width,
+                      opacity: const AlwaysStoppedAnimation(0.6))
+                  : Image.asset('assets/img/background.jpg',
+                      height: MediaQuery.sizeOf(context).height,
+                      fit: BoxFit.cover,
+                      width: MediaQuery.sizeOf(context).width,
+                      opacity: const AlwaysStoppedAnimation(0.6)),
+            ),
+            Obx(
+              () => controller.chatList.isEmpty
+                  ? const Center(child: Text('No Data'))
+                  : ListView.builder(
+                      itemCount: controller.chatList.length,
+                      itemBuilder: (context, index) {
+                        return Align(
+                          alignment: controller.chatList[index].status == 0
+                              ? Alignment.centerRight
+                              : Alignment.centerLeft,
+                          child: Dismissible(
+                            onDismissed: (direction) {
+                              deleteDialog(context, index);
+                            },
+                            direction: DismissDirection.endToStart,
+                            key: Key('${controller.chatList[index]}'),
+                            background: Container(color: Colors.black12),
+                            child: Container(
+                              padding: const EdgeInsets.all(15),
+                              margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors:
+                                        likeController.isLight.value == false
+                                            ? [
+                                                Colors.white.withOpacity(0.4),
+                                                Colors.blue.withOpacity(0.4)
+                                              ]
+                                            : [
+                                                Colors.red.withOpacity(0.25),
+                                                Colors.blue.withOpacity(0.25)
+                                              ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Text(
+                                '${controller.chatList[index].result}',
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Text(
-                            '${controller.chatList[index].result}',
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
+            ),
+          ],
         ),
       ),
     );

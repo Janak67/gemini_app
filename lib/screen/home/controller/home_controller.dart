@@ -10,6 +10,7 @@ class HomeController extends GetxController {
   ValueNotifier<bool> isLoading = ValueNotifier(false);
   RxList<DbModel> chatList = <DbModel>[].obs;
   RxList<DbModel> list = <DbModel>[].obs;
+  RxBool isOnline = false.obs;
 
   Future<void> getData(String question) async {
     isLoading.value = true;
@@ -25,7 +26,7 @@ class HomeController extends GetxController {
     // chatList.add(homeModel.value!.candidates![0].content!.parts![0].text!);
     isLoading.value = false;
 
-    list.value
+    list
         .map((element) => print("${element.result} ${element.status}"))
         .toList();
   }
@@ -34,5 +35,9 @@ class HomeController extends GetxController {
     chatList.value = await DbHelper.dbHelper.readData();
     // List<DbModel> favorite = await DbHelper.dbHelper.readData();
     // searchList.value = favorite;
+  }
+
+  void changeStatus(bool status) {
+    isOnline.value = status;
   }
 }
