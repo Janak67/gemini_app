@@ -11,18 +11,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  List<String> bgList = [
-    'assets/img/bg2.jpeg',
-    'assets/img/bg1.jpeg',
-    'assets/img/bg3.jpeg',
-    'assets/img/bg4.webp',
-    'assets/img/bg5.jpeg',
-    'assets/img/bg6.jpeg',
-    'assets/img/bg7.jpg',
-    'assets/img/bg8.jpeg'
-  ];
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,9 +18,9 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(bgList[selectedIndex]), fit: BoxFit.fill),
+                image: AssetImage('assets/img/bg4.webp'), fit: BoxFit.fill),
           ),
           alignment: Alignment.center,
           child: Container(
