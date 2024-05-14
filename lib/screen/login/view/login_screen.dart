@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:advance_exam/utils/helper/fire_helper.dart';
 import 'package:advance_exam/utils/text_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController txtPassword = TextEditingController();
+  TextEditingController txtEmail = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         child: TextFormField(
+                          controller: txtEmail,
                           style: const TextStyle(color: Colors.white),
                           decoration: const InputDecoration(
                               suffixIcon: Icon(Icons.mail, color: Colors.white),
@@ -76,6 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         child: TextFormField(
+                          controller: txtPassword,
                           style: const TextStyle(color: Colors.white),
                           decoration: const InputDecoration(
                               suffixIcon: Icon(Icons.lock, color: Colors.white),
@@ -103,7 +109,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Colors.white)),
-                          onPressed: () => Get.toNamed('home'),
+                          onPressed: () async {
+                            String message = await FireHelper.fireHelper
+                                .createAccount(
+                                    email: txtEmail.text,
+                                    password: txtPassword.text);
+                            Get.snackbar(message, '');
+                            Get.toNamed('home');
+                          },
                           child: TextUtil(text: 'Login', color: Colors.black),
                         ),
                       ),
