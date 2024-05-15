@@ -18,8 +18,7 @@ class LikeController extends GetxController {
   }
 
   void changeTheme() async {
-    ShareHelper shr = ShareHelper();
-    bool? isTheme = await shr.getTheme();
+    bool? isTheme = await ShareHelper.shareHelper.getTheme();
     isLight.value = isTheme ?? false;
   }
 }

@@ -2,6 +2,7 @@ import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
 import 'package:advance_exam/screen/like/model/db_model.dart';
 import 'package:advance_exam/utils/helper/db_helper.dart';
+import 'package:advance_exam/utils/helper/fire_helper.dart';
 import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:advance_exam/utils/network.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           () => Switch(
                             value: likeController.isLight.value,
                             onChanged: (value) {
-                              ShareHelper shr = ShareHelper();
-                              shr.setTheme(value);
+                              ShareHelper.shareHelper.setTheme(value);
                               likeController.changeTheme();
                             },
                           ),
@@ -71,6 +71,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ];
               },
+            ),
+            IconButton(
+              onPressed: () {
+                FireHelper.fireHelper.logOut();
+                Get.snackbar('logOut', 'Success');
+                Get.offAllNamed('login');
+              },
+              icon: Icon(Icons.logout),
             ),
           ],
         ),

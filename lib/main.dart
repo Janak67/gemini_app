@@ -20,6 +20,7 @@ void main() async {
           debugShowCheckedModeBanner: false,
           theme: controller.isLight.value ? lightTheme : darkTheme,
           routes: screen_routes,
+          // initialRoute: 'intro',
         );
       },
     ),
