@@ -11,7 +11,10 @@ void deleteDialog(BuildContext context, int index) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Are you sure to Delete'),
+        title: const Text(
+          'Are you sure to Delete',
+          style: TextStyle(fontFamily: 'comic'),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -27,12 +30,18 @@ void deleteDialog(BuildContext context, int index) {
                     Get.snackbar('Delete', 'Success',
                         duration: const Duration(milliseconds: 1000));
                   },
-                  child: const Text('Yes'),
+                  child: const Text(
+                    'Yes',
+                    style: TextStyle(fontFamily: 'comic'),
+                  ),
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () => Get.back(),
-                  child: const Text('No'),
+                  child: const Text(
+                    'No',
+                    style: TextStyle(fontFamily: 'comic'),
+                  ),
                 ),
               ],
             ),
@@ -41,7 +50,7 @@ void deleteDialog(BuildContext context, int index) {
               children: [
                 const Text(
                   'Link Copy',
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 22, fontFamily: 'comic'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -49,7 +58,10 @@ void deleteDialog(BuildContext context, int index) {
                         '${controller.chatList[index].result}');
                     Get.back();
                   },
-                  child: const Text('Copy'),
+                  child: const Text(
+                    'Copy',
+                    style: TextStyle(fontFamily: 'comic'),
+                  ),
                 ),
               ],
             ),

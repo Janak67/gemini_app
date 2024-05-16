@@ -2,9 +2,8 @@ import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
 import 'package:advance_exam/screen/like/model/db_model.dart';
 import 'package:advance_exam/utils/helper/db_helper.dart';
-import 'package:advance_exam/utils/helper/fire_helper.dart';
-import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:advance_exam/utils/network.dart';
+import 'package:advance_exam/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -34,51 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Gemini AI'),
+          title: Text('Gemini AI', style: comic),
           actions: [
-            PopupMenuButton(
-              itemBuilder: (context) {
-                return [
-                  PopupMenuItem(
-                    child: Row(
-                      children: [
-                        const Icon(Icons.light_mode_outlined),
-                        const SizedBox(width: 8),
-                        const Text('Theme'),
-                        Obx(
-                          () => Switch(
-                            value: likeController.isLight.value,
-                            onChanged: (value) {
-                              ShareHelper.shareHelper.setTheme(value);
-                              likeController.changeTheme();
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    child: InkWell(
-                      onTap: () => Get.toNamed('like'),
-                      child: const Row(
-                        children: [
-                          Icon(Icons.history),
-                          SizedBox(width: 10),
-                          Text('Search History'),
-                        ],
-                      ),
-                    ),
-                  ),
-                ];
-              },
-            ),
             IconButton(
-              onPressed: () {
-                FireHelper.fireHelper.logOut();
-                Get.snackbar('logOut', 'Success');
-                Get.offAllNamed('login');
-              },
-              icon: Icon(Icons.logout),
+              onPressed: () => Get.toNamed('setting'),
+              icon: Icon(Icons.settings),
             ),
           ],
         ),
@@ -136,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       '${controller.list[reversedIndex].result}',
                                       style: TextStyle(
                                           fontSize: 18,
+                                          fontFamily: 'comic',
                                           fontWeight: FontWeight.bold,
                                           color:
                                               controller.list[index].status == 0
@@ -171,8 +131,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 55,
                           child: SearchBar(
                             controller: txtSearch,
-                            elevation: MaterialStateProperty.all(1),
-                            hintText: 'search...',
+                            elevation: WidgetStateProperty.all(1),
+                            hintText: 'Message Gemini...',
                             trailing: [
                               ValueListenableBuilder(
                                 valueListenable: controller.isLoading,
@@ -204,11 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 )
-              : const Center(
-                  child: Text(
-                    'please check Internet Connection',
-                    style: TextStyle(fontSize: 20),
-                  ),
+              : Center(
+                  child: Text('Please Check Internet Connection', style: comic),
                 ),
         ),
       ),

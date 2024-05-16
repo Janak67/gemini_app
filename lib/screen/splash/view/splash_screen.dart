@@ -1,7 +1,6 @@
-import 'package:advance_exam/utils/helper/fire_helper.dart';
-import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,20 +9,12 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  AnimationController? controller;
-  Animation? animation;
+class _SplashScreenState extends State<SplashScreen> {
   bool? status;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    )..repeat(reverse: true);
-    animation = Tween<double>(begin: 1.0, end: 1.2).animate(controller!);
     // bool isLogin = FireHelper.fireHelper.checkUser();
     Future.delayed(
       const Duration(seconds: 4),
@@ -47,25 +38,10 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black,
         body: Center(
-          child: AnimatedBuilder(
-            animation: animation!,
-            builder: (context, child) {
-              return Transform.scale(
-                scale: animation!.value,
-                child: Image.asset('assets/img/gemini.jpg'),
-              );
-            },
-          ),
+          child: Lottie.asset('assets/json/Animation.json', height: 150),
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    controller!.dispose();
-    super.dispose();
   }
 }

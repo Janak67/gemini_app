@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
+import 'package:advance_exam/screen/like/controller/like_controller.dart';
 import 'package:advance_exam/screen/login/controller/login_controller.dart';
 import 'package:advance_exam/utils/helper/fire_helper.dart';
 import 'package:advance_exam/utils/network.dart';
@@ -19,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController txtEmail = TextEditingController();
   HomeController homeController = Get.put(HomeController());
   LoginController controller = Get.put(LoginController());
+  LikeController likeController = Get.put(LikeController());
   NetworkConnection connection = NetworkConnection();
 
   @override
@@ -36,11 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
               ? Container(
                   height: double.infinity,
                   width: double.infinity,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/img/bg4.webp'),
-                        fit: BoxFit.fill),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   image: DecorationImage(
+                  //       image: Obx(
+                  //         () => likeController.isLight.value == false
+                  //             ? AssetImage('assets/img/bg4.webp')
+                  //             : AssetImage('assets/img/bg2.jpeg'),
+                  //       ),
+                  //       fit: BoxFit.fill),
+                  // ),
                   alignment: Alignment.center,
                   child: Container(
                     height: 400,
@@ -75,7 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 child: TextFormField(
                                   controller: txtEmail,
-                                  style: const TextStyle(color: Colors.white),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontFamily: 'comic'),
                                   decoration: const InputDecoration(
                                       suffixIcon:
                                           Icon(Icons.mail, color: Colors.white),
@@ -96,7 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   () => TextFormField(
                                     obscureText: controller.isHidden.value,
                                     controller: txtPassword,
-                                    style: const TextStyle(color: Colors.white),
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'comic'),
                                     decoration: InputDecoration(
                                         suffixIcon: InkWell(
                                           onTap: () =>
@@ -160,8 +169,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     },
                                     child: Text(
                                       "Don't Have an Account?",
-                                      style:
-                                          TextStyle(color: Colors.blueAccent),
+                                      style: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontFamily: 'comic'),
                                     ),
                                   ),
                                   const Spacer(),
@@ -172,7 +182,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     onPressed: () => Get.toNamed('signUp'),
                                     child: Text(
                                       'Create Account',
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'comic'),
                                     ),
                                   ),
                                 ],
@@ -187,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
               : const Center(
                   child: Text(
                     'please check Internet Connection',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, fontFamily: 'comic'),
                   ),
                 ),
         ),

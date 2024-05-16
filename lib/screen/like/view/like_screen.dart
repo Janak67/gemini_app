@@ -1,5 +1,6 @@
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
+import 'package:advance_exam/utils/text_style.dart';
 import 'package:advance_exam/widget/show_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class _LikeScreenState extends State<LikeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Favorite'),
+          title: Text('Favorite',style: comic),
         ),
         body: Stack(
           children: [
@@ -81,7 +82,7 @@ class _LikeScreenState extends State<LikeScreen> {
                                 '${controller.chatList[index].result}',
                                 style: const TextStyle(
                                     color: Colors.black,
-                                    fontSize: 18,
+                                    fontSize: 18,fontFamily: 'comic',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),

@@ -66,7 +66,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         child: TextFormField(
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                              color: Colors.white, fontFamily: 'comic'),
                           decoration: const InputDecoration(
                               suffixIcon:
                                   Icon(Icons.person, color: Colors.white),
@@ -85,7 +86,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: TextFormField(
                           controller: txtEmail,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                              color: Colors.white, fontFamily: 'comic'),
                           decoration: const InputDecoration(
                               suffixIcon: Icon(Icons.mail, color: Colors.white),
                               fillColor: Colors.white,
@@ -105,7 +107,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           () => TextFormField(
                             obscureText: controller.isHidden.value,
                             controller: txtPassword,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                                color: Colors.white, fontFamily: 'comic'),
                             decoration: InputDecoration(
                                 suffixIcon: InkWell(
                                   onTap: () => controller.togglePasswordView(),
@@ -117,6 +120,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 fillColor: Colors.white,
                                 border: InputBorder.none),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter a password';
+                              }
+                              if (value.length < 8) {
+                                return 'Password must be at least 6 characters long';
+                              }
+                              if (!value.contains(RegExp(r'[A-Z]'))) {
+                                return 'Password must contain at least one uppercase letter';
+                              }
+                              if (!value.contains(RegExp(r'[0-9]'))) {
+                                return 'Password must contain at least one numeric character';
+                              }
+                              return null;
+                            },
                           ),
                         ),
                       ),

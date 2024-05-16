@@ -16,6 +16,7 @@ class TextUtil extends StatelessWidget {
         fontSize: size ?? 16,
         fontWeight: weight == null ? FontWeight.w600 : FontWeight.w700,
         color: color ?? Colors.white,
+        fontFamily: 'comic'
       ),
     );
   }
