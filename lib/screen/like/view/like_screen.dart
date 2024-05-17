@@ -27,7 +27,7 @@ class _LikeScreenState extends State<LikeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Favorite',style: comic),
+          title: Text('Favorite', style: comic),
         ),
         body: Stack(
           children: [
@@ -55,8 +55,8 @@ class _LikeScreenState extends State<LikeScreen> {
                               ? Alignment.centerRight
                               : Alignment.centerLeft,
                           child: Dismissible(
-                            onDismissed: (direction) {
-                              deleteDialog(context, index);
+                            confirmDismiss: (direction) {
+                              return deleteDialog(context, index);
                             },
                             direction: DismissDirection.endToStart,
                             key: Key('${controller.chatList[index]}'),
@@ -82,7 +82,8 @@ class _LikeScreenState extends State<LikeScreen> {
                                 '${controller.chatList[index].result}',
                                 style: const TextStyle(
                                     color: Colors.black,
-                                    fontSize: 18,fontFamily: 'comic',
+                                    fontSize: 18,
+                                    fontFamily: 'comic',
                                     fontWeight: FontWeight.bold),
                               ),
                             ),

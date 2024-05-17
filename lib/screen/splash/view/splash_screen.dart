@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 4),
       () {
-        Get.offAllNamed('intro');
+        Get.offAllNamed('home');
         // Get.offAllNamed(status == false || status == null
         //     ? 'intro'
         //     : isLogin == false

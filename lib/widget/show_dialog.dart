@@ -4,10 +4,11 @@ import 'package:advance_exam/utils/helper/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void deleteDialog(BuildContext context, int index) {
-  HomeController controller = Get.put(HomeController());
-  LikeController likeController = Get.put(LikeController());
-  showDialog(
+Future<bool> deleteDialog(BuildContext context, int index) async {
+  bool isDeleted = false;
+  HomeController controller = Get.find();
+  LikeController likeController = Get.find();
+  return await showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
@@ -22,10 +23,11 @@ void deleteDialog(BuildContext context, int index) {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    DbHelper.dbHelper
+                  onPressed: () async {
+                    await DbHelper.dbHelper
                         .deleteData(id: '${controller.chatList[index].id}');
-                    controller.dbData();
+                    await controller.dbData();
+                    isDeleted = true;
                     Get.back();
                     Get.snackbar('Delete', 'Success',
                         duration: const Duration(milliseconds: 1000));
@@ -68,6 +70,10 @@ void deleteDialog(BuildContext context, int index) {
           ],
         ),
       );
+    },
+  ).then(
+    (value) {
+      return isDeleted;
     },
   );
 }

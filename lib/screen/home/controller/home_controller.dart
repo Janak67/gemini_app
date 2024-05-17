@@ -31,7 +31,7 @@ class HomeController extends GetxController {
         .toList();
   }
 
-  void dbData() async {
+  Future<void> dbData() async {
     chatList.value = await DbHelper.dbHelper.readData();
     // List<DbModel> favorite = await DbHelper.dbHelper.readData();
     // searchList.value = favorite;
