@@ -1,3 +1,5 @@
+import 'package:advance_exam/utils/helper/fire_helper.dart';
+import 'package:advance_exam/utils/helper/share_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -15,24 +17,23 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // bool isLogin = FireHelper.fireHelper.checkUser();
+    bool isLogin = FireHelper.fireHelper.checkUser();
     Future.delayed(
       const Duration(seconds: 4),
       () {
-        Get.offAllNamed('home');
-        // Get.offAllNamed(status == false || status == null
-        //     ? 'intro'
-        //     : isLogin == false
-        //         ? 'login'
-        //         : 'home');
+        Get.offAllNamed(status == false || status == null
+            ? 'intro'
+            : isLogin == false
+                ? 'login'
+                : 'home');
       },
     );
-    // createIntro();
+    createIntro();
   }
 
-  // Future<void> createIntro() async {
-  //   status = await ShareHelper.shareHelper.getIntro();
-  // }
+  Future<void> createIntro() async {
+    status = await ShareHelper.shareHelper.getIntro();
+  }
 
   @override
   Widget build(BuildContext context) {

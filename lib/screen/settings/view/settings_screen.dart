@@ -14,7 +14,6 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   LikeController controller = Get.put(LikeController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

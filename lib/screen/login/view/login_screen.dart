@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 import 'package:advance_exam/screen/home/controller/home_controller.dart';
 import 'package:advance_exam/screen/like/controller/like_controller.dart';
@@ -6,6 +7,7 @@ import 'package:advance_exam/utils/helper/fire_helper.dart';
 import 'package:advance_exam/utils/network.dart';
 import 'package:advance_exam/utils/text_style.dart';
 import 'package:advance_exam/utils/text_util.dart';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,12 +24,13 @@ class _LoginScreenState extends State<LoginScreen> {
   HomeController homeController = Get.put(HomeController());
   LoginController controller = Get.put(LoginController());
   LikeController likeController = Get.put(LikeController());
-  NetworkConnection connection = NetworkConnection();
+  NetworkConnection connection = NetworkConnection();late ConfettiController controllerCenter;
 
   @override
   void initState() {
     super.initState();
     connection.checkConnection();
+    controllerCenter = ConfettiController(duration: Duration(seconds: 1));
   }
 
   @override
@@ -135,6 +138,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ],
                                   ),
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: ConfettiWidget(confettiController: controllerCenter,blastDirection: pi,particleDrag: 0.05,emissionFrequency: 0.05,numberOfParticles: 20,gravity: 0.05,shouldLoop: false,colors: [
+                                      Colors.green,Colors.blue,Colors.pink
+                                    ],strokeWidth: 1,strokeColor: Colors.white,),
+                                  ),
                                   const Spacer(),
                                   SizedBox(
                                     width: double.infinity,
@@ -144,6 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               WidgetStatePropertyAll(
                                                   Colors.white)),
                                       onPressed: () async {
+                                        controllerCenter.play();
                                         String message =
                                             await FireHelper.fireHelper.signIn(
                                                 email: txtEmail.text,
@@ -197,5 +207,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    controllerCenter.dispose();
+    super.dispose();
   }
 }
