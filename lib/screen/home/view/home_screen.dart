@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ? 0
                                                   : 15)),
                                     ),
-                                    child: Text(
+                                    child: SelectableText(
                                       '${controller.list[reversedIndex].result}',
                                       style: TextStyle(
                                           fontSize: 18,

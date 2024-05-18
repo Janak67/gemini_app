@@ -78,7 +78,7 @@ class _LikeScreenState extends State<LikeScreen> {
                                               ],
                                   ),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: Text(
+                              child: SelectableText(
                                 '${controller.chatList[index].result}',
                                 style: const TextStyle(
                                     color: Colors.black,

@@ -14,6 +14,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   LikeController controller = Get.put(LikeController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -39,6 +40,28 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             Column(
               children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          child: Text('${FireHelper.fireHelper.user!.email}'
+                              .toUpperCase()
+                              .substring(0, 1)),
+                        ),
+                        SelectableText('${FireHelper.fireHelper.user!.email}',
+                            style: comic20),
+                      ],
+                    ),
+                  ),
+                ),
                 ListTile(
                   leading: Obx(
                     () => controller.isLight.value == false
