@@ -24,7 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
   HomeController homeController = Get.put(HomeController());
   LoginController controller = Get.put(LoginController());
   LikeController likeController = Get.put(LikeController());
-  NetworkConnection connection = NetworkConnection();late ConfettiController controllerCenter;
+  NetworkConnection connection = NetworkConnection();
+  late ConfettiController controllerCenter;
 
   @override
   void initState() {
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Center(
                       child: Container(
-                        height: 400,
+                        height: 410,
                         margin: const EdgeInsets.symmetric(horizontal: 30),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
@@ -140,9 +141,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   Align(
                                     alignment: Alignment.bottomCenter,
-                                    child: ConfettiWidget(confettiController: controllerCenter,blastDirection: pi,particleDrag: 0.05,emissionFrequency: 0.05,numberOfParticles: 20,gravity: 0.05,shouldLoop: false,colors: [
-                                      Colors.green,Colors.blue,Colors.pink
-                                    ],strokeWidth: 1,strokeColor: Colors.white,),
+                                    child: ConfettiWidget(
+                                        confettiController: controllerCenter,
+                                        blastDirection: pi,particleDrag: 0.05,
+                                        emissionFrequency: 0.05,
+                                        numberOfParticles: 20,gravity: 0.05,
+                                        shouldLoop: false,
+                                        colors: [Colors.green,
+                                          Colors.blue,Colors.pink],
+                                        strokeWidth: 1,
+                                        strokeColor: Colors.white),
                                   ),
                                   const Spacer(),
                                   SizedBox(
@@ -208,6 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
   @override
   void dispose() {
     controllerCenter.dispose();

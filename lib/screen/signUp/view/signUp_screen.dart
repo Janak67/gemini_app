@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             alignment: Alignment.center,
             child: Container(
-              height: MediaQuery.sizeOf(context).height * 0.6,
+              height: MediaQuery.sizeOf(context).height * 0.65,
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
