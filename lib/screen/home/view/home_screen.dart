@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeController controller = Get.put(HomeController());
   TextEditingController txtSearch = TextEditingController();
   LikeController likeController = Get.put(LikeController());
-
   NetworkConnection connection = NetworkConnection();
 
   @override
