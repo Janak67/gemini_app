@@ -12,3 +12,8 @@ TextStyle txtBlue = TextStyle(
     color: Colors.blueAccent, fontFamily: 'comic', fontWeight: FontWeight.bold);
 TextStyle txtWhite = TextStyle(
     color: Colors.white, fontFamily: 'comic', fontWeight: FontWeight.bold);
+TextStyle txt18 = TextStyle(
+    color: Colors.black,
+    fontSize: 18,
+    fontFamily: 'comic',
+    fontWeight: FontWeight.bold);

@@ -143,12 +143,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                     alignment: Alignment.bottomCenter,
                                     child: ConfettiWidget(
                                         confettiController: controllerCenter,
-                                        blastDirection: pi,particleDrag: 0.05,
+                                        blastDirection: pi,
+                                        particleDrag: 0.05,
                                         emissionFrequency: 0.05,
-                                        numberOfParticles: 20,gravity: 0.05,
+                                        numberOfParticles: 20,
+                                        gravity: 0.05,
                                         shouldLoop: false,
-                                        colors: [Colors.green,
-                                          Colors.blue,Colors.pink],
+                                        colors: [
+                                          Colors.green,
+                                          Colors.blue,
+                                          Colors.pink
+                                        ],
                                         strokeWidth: 1,
                                         strokeColor: Colors.white),
                                   ),
@@ -208,10 +213,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 )
-              : const Center(
-                  child: Text('Please Check Internet Connection',
-                      style: TextStyle(fontSize: 20, fontFamily: 'comic')),
-                ),
+              : Center(
+                  child:
+                      Text('Please Check Internet Connection', style: comic20)),
         ),
       ),
     );
