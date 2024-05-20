@@ -4,6 +4,7 @@ import 'package:advance_exam/screen/like/model/db_model.dart';
 import 'package:advance_exam/utils/helper/db_helper.dart';
 import 'package:advance_exam/utils/network.dart';
 import 'package:advance_exam/utils/text_style.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -152,8 +153,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                       await controller.getData(txtSearch.text);
                                       txtSearch.clear();
                                     },
-                                    child: const Icon(Icons.send,
-                                        size: 25, color: Colors.deepPurple),
+                                    child: AvatarGlow(
+                                      startDelay: Duration(milliseconds: 1500),
+                                      glowColor: Colors.white12,
+                                      glowShape: BoxShape.circle,
+                                      animate: true,
+                                      curve: Curves.fastOutSlowIn,
+                                      child: const Icon(Icons.send,
+                                          size: 25, color: Colors.deepPurple),
+                                    ),
                                   );
                                 },
                               ),
