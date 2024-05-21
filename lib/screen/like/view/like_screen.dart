@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
+import '../../../utils/helper/db_helper.dart';
+
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});
 
@@ -66,6 +68,9 @@ class _LikeScreenState extends State<LikeScreen> {
                                   child: Dismissible(
                                     confirmDismiss: (direction) {
                                       return deleteDialog(context, index);
+                                    },
+                                    onDismissed: (direction) {
+                                      controller.deleteData(index);
                                     },
                                     direction: DismissDirection.endToStart,
                                     key: Key('${controller.chatList[index]}'),

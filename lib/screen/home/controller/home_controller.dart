@@ -37,6 +37,10 @@ class HomeController extends GetxController {
     // searchList.value = favorite;
   }
 
+  Future<void> deleteData(int index) async {
+    await DbHelper.dbHelper.deleteData(id: '${chatList[index].id}');
+  }
+
   void changeStatus(bool status) {
     isOnline.value = status;
   }

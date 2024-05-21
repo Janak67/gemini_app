@@ -24,9 +24,6 @@ Future<bool> deleteDialog(BuildContext context, int index) async {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await DbHelper.dbHelper
-                        .deleteData(id: '${controller.chatList[index].id}');
-                    await controller.dbData();
                     isDeleted = true;
                     Get.back();
                     Get.snackbar('Delete', 'Success',
@@ -39,7 +36,10 @@ Future<bool> deleteDialog(BuildContext context, int index) async {
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed: () => Get.back(),
+                  onPressed: () {
+                    isDeleted = false;
+                    Get.back();
+                  },
                   child: const Text(
                     'No',
                     style: TextStyle(fontFamily: 'comic'),
@@ -56,6 +56,7 @@ Future<bool> deleteDialog(BuildContext context, int index) async {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    isDeleted = false;
                     likeController.copyToClipboard(
                         '${controller.chatList[index].result}');
                     Get.back();
