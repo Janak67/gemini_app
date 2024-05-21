@@ -10,9 +10,9 @@ Screenshots :
 
    Dark Theme : 
 <p>
-  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/b3b5455b-37b3-4669-a5e2-13ce2c2c910b" height="410" width="210">
-  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/dc0c5127-21c6-479a-a51c-22f781a9fce4" height="410" width="210">
-  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/79b5133a-45f6-4f0c-8598-d47614836181" height="410" width="210">
+  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/b3b5455b-37b3-4669-a5e2-13ce2c2c910b" height="420" width="210">
+  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/dc0c5127-21c6-479a-a51c-22f781a9fce4" height="420" width="210">
+  <img src = "https://github.com/Janak67/gemini_app/assets/141834407/79b5133a-45f6-4f0c-8598-d47614836181" height="420" width="210">
   <img src = "https://github.com/Janak67/gemini_app/assets/141834407/8bc9d051-2118-4342-9da3-aad836f0386f" height="410" width="210">
   <img src = "https://github.com/Janak67/gemini_app/assets/141834407/1813780c-f106-4ba8-8a36-3d77ba8878d3" height="410" width="210">
   <img src = "https://github.com/Janak67/gemini_app/assets/141834407/6fa97291-d9c8-415b-ad1a-6aa1f4e0e401" height="410" width="210">
