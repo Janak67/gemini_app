@@ -8,7 +8,7 @@ This project is a starting point for a Flutter application.
 
 Screenshots : 
 
-    Dark Theme : 
+   Dark Theme : 
 <p>
   <img src = "https://github.com/Janak67/gemini_app/assets/141834407/b3b5455b-37b3-4669-a5e2-13ce2c2c910b" height="410" width="210">
   <img src = "https://github.com/Janak67/gemini_app/assets/141834407/dc0c5127-21c6-479a-a51c-22f781a9fce4" height="410" width="210">
