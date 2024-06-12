@@ -9,7 +9,7 @@ class ApiHelper {
 
   Future<HomeModel?> apiCall(String question) async {
     String apiLink =
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDhOaIQKs9nnzdWh7IEpMUQ97vBLQVS6dY";
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyDQ5zRRIdUv3k5aNoHDOVIu5WoThiKYeM4";
     final body = jsonEncode({
       "contents": [
         {
