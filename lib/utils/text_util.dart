@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class TextUtil extends StatelessWidget {
   String text;
@@ -13,11 +13,10 @@ class TextUtil extends StatelessWidget {
     return SelectableText(
       text,
       style: TextStyle(
-        fontSize: size ?? 16,
-        fontWeight: weight == null ? FontWeight.w600 : FontWeight.w700,
-        color: color ?? Colors.white,
-        fontFamily: 'comic'
-      ),
+          fontSize: size ?? 16,
+          fontWeight: weight == null ? FontWeight.w600 : FontWeight.w700,
+          color: color ?? Colors.white,
+          fontFamily: 'comic'),
     );
   }
 }

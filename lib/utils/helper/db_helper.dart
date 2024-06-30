@@ -1,8 +1,5 @@
 import 'dart:io';
-import 'package:advance_exam/screen/like/model/db_model.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class DbHelper {
   static DbHelper dbHelper = DbHelper._();

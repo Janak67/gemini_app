@@ -1,11 +1,4 @@
-import 'package:advance_exam/screen/home/view/home_screen.dart';
-import 'package:advance_exam/screen/intro/view/intro_screen.dart';
-import 'package:advance_exam/screen/like/view/like_screen.dart';
-import 'package:advance_exam/screen/login/view/login_screen.dart';
-import 'package:advance_exam/screen/settings/view/settings_screen.dart';
-import 'package:advance_exam/screen/signUp/view/signUp_screen.dart';
-import 'package:advance_exam/screen/splash/view/splash_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:advance_exam/utils/import.dart';
 
 // ignore: non_constant_identifier_names
 Map<String, WidgetBuilder> screen_routes = {

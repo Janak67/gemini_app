@@ -1,5 +1,4 @@
-import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class LoginController extends GetxController {
   RxBool isHidden = true.obs;

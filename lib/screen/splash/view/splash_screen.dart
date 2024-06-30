@@ -1,8 +1,4 @@
-import 'package:advance_exam/utils/helper/fire_helper.dart';
-import 'package:advance_exam/utils/helper/share_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

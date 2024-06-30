@@ -1,8 +1,4 @@
-import 'package:advance_exam/screen/home/controller/home_controller.dart';
-import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/utils/helper/db_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 Future<bool> deleteDialog(BuildContext context, int index) async {
   bool isDeleted = false;

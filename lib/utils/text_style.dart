@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:advance_exam/utils/import.dart';
 
 TextStyle comic = TextStyle(fontFamily: 'comic', fontWeight: FontWeight.bold);
 TextStyle comic20 =

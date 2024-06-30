@@ -1,6 +1,4 @@
-import 'package:advance_exam/utils/helper/share_helper.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class LikeController extends GetxController {
   // RxList<DbModel> searchList = <DbModel>[].obs;

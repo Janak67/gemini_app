@@ -1,12 +1,4 @@
-import 'package:advance_exam/screen/home/controller/home_controller.dart';
-import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/utils/text_style.dart';
-import 'package:advance_exam/widget/show_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get/get.dart';
-
-import '../../../utils/helper/db_helper.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class LikeScreen extends StatefulWidget {
   const LikeScreen({super.key});

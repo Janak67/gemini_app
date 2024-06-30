@@ -1,4 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class ShareHelper {
   static ShareHelper shareHelper = ShareHelper._();

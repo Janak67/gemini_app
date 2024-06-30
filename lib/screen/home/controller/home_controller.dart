@@ -1,9 +1,4 @@
-import 'package:advance_exam/screen/home/model/home_model.dart';
-import 'package:advance_exam/screen/like/model/db_model.dart';
-import 'package:advance_exam/utils/helper/api_helper.dart';
-import 'package:advance_exam/utils/helper/db_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class HomeController extends GetxController {
   Rxn<HomeModel> homeModel = Rxn<HomeModel>();

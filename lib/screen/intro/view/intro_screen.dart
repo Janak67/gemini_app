@@ -1,8 +1,4 @@
-import 'package:advance_exam/utils/helper/share_helper.dart';
-import 'package:advance_exam/utils/text_style.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:introduction_screen/introduction_screen.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

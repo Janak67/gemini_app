@@ -1,13 +1,4 @@
-import 'package:advance_exam/screen/home/controller/home_controller.dart';
-import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/screen/like/model/db_model.dart';
-import 'package:advance_exam/utils/helper/db_helper.dart';
-import 'package:advance_exam/utils/network.dart';
-import 'package:advance_exam/utils/text_style.dart';
-import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

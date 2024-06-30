@@ -1,13 +1,5 @@
+import 'package:advance_exam/utils/import.dart';
 import 'dart:ui';
-import 'package:advance_exam/screen/home/controller/home_controller.dart';
-import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/screen/login/controller/login_controller.dart';
-import 'package:advance_exam/utils/helper/fire_helper.dart';
-import 'package:advance_exam/utils/network.dart';
-import 'package:advance_exam/utils/text_style.dart';
-import 'package:advance_exam/utils/text_util.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

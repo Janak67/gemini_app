@@ -1,9 +1,4 @@
-import 'package:advance_exam/screen/like/controller/like_controller.dart';
-import 'package:advance_exam/utils/helper/fire_helper.dart';
-import 'package:advance_exam/utils/helper/share_helper.dart';
-import 'package:advance_exam/utils/text_style.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});

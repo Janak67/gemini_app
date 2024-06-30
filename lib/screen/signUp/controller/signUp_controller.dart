@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+import 'package:advance_exam/utils/import.dart';
 
 class SignUpController extends GetxController {
   RxBool isValid = false.obs;
