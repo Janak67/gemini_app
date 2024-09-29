@@ -1,3 +1,5 @@
+import 'package:advance_exam/custom_widget/common_app_bar.dart';
+import 'package:advance_exam/custom_widget/log_out_dialog.dart';
 import 'package:advance_exam/utils/import.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -14,10 +16,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('Setting', style: comic),
-        ),
+        appBar: AppBarView(title: 'Setting'),
         body: Stack(
           children: [
             Obx(
@@ -81,11 +80,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   trailing: Icon(Icons.arrow_forward_ios_outlined, size: 20),
                 ),
                 ListTile(
-                  onTap: () {
-                    FireHelper.fireHelper.logOut();
-                    Get.snackbar('logOut', 'Success');
-                    Get.offAllNamed('login');
-                  },
+                  onTap: () => logOutDialog(context),
                   leading: Icon(Icons.logout_outlined),
                   title: Text('Logout', style: comic20),
                   trailing: Icon(Icons.arrow_forward_ios_outlined, size: 20),

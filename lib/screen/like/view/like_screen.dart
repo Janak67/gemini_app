@@ -1,3 +1,4 @@
+import 'package:advance_exam/custom_widget/common_app_bar.dart';
 import 'package:advance_exam/utils/import.dart';
 
 class LikeScreen extends StatefulWidget {
@@ -21,9 +22,7 @@ class _LikeScreenState extends State<LikeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Favorite', style: comic),
-        ),
+        appBar: AppBarView(title: 'Favorite'),
         body: Stack(
           children: [
             Obx(
@@ -41,7 +40,13 @@ class _LikeScreenState extends State<LikeScreen> {
             ),
             Obx(
               () => controller.chatList.isEmpty
-                  ? const Center(child: Text('No Data'))
+                  ? Center(
+                      child: Lottie.asset('assets/lottie/no_data_found.json',
+                          height: 150,
+                          width: 130,
+                          fit: BoxFit.cover,
+                          repeat: false),
+                    )
                   : AnimationLimiter(
                       child: ListView.builder(
                         itemCount: controller.chatList.length,

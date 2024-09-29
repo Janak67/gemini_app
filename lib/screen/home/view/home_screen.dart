@@ -24,6 +24,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          flexibleSpace: Stack(
+            children: [
+              Obx(
+                () => likeController.isLight.value == false
+                    ? Image.asset('assets/img/chat.jpg',
+                        width: MediaQuery.sizeOf(context).width,
+                        fit: BoxFit.cover)
+                    : Image.asset('assets/img/background.jpg',
+                        width: MediaQuery.sizeOf(context).width,
+                        fit: BoxFit.cover),
+              ),
+              Obx(
+                () => Container(
+                    color: likeController.isLight.value
+                        ? Colors.white.withOpacity(0.2)
+                        : Colors.black.withOpacity(0.2)),
+              ),
+            ],
+          ),
           title: Text('Gemini AI', style: comic),
           actions: [
             IconButton(

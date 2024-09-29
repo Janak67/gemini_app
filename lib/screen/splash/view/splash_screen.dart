@@ -35,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         body: Center(
           child: Lottie.asset('assets/json/Animation.json', height: 150),
         ),

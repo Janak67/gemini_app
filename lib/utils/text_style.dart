@@ -3,6 +3,13 @@ import 'package:advance_exam/utils/import.dart';
 TextStyle comic = TextStyle(fontFamily: 'comic', fontWeight: FontWeight.bold);
 TextStyle comic20 =
     TextStyle(fontFamily: 'comic', fontWeight: FontWeight.bold, fontSize: 20);
+TextStyle comic16 =
+    TextStyle(fontFamily: 'comic', fontSize: 16, color: Colors.grey);
+TextStyle txt16 = TextStyle(
+    fontFamily: 'comic',
+    fontSize: 16,
+    color: Colors.black,
+    fontWeight: FontWeight.w600);
 TextStyle txt22 = TextStyle(
     color: Colors.white,
     fontSize: 22,

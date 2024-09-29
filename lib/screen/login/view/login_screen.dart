@@ -128,27 +128,45 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ],
                                   ),
                                   const Spacer(),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      style: const ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStatePropertyAll(
-                                                  Colors.white)),
-                                      onPressed: () async {
-                                        String message =
-                                            await FireHelper.fireHelper.signIn(
-                                                email: txtEmail.text,
-                                                password: txtPassword.text);
-                                        Get.snackbar(message, '');
-                                        if (message == 'Success') {
-                                          FireHelper.fireHelper.checkUser();
-                                          Get.offAllNamed('home');
-                                        }
-                                      },
-                                      child: TextUtil(
-                                          text: 'Login', color: Colors.black),
-                                    ),
+                                  Obx(
+                                    () => controller.isLoading.value
+                                        ? Center(
+                                            child: Lottie.asset(
+                                                'assets/lottie/loader.json',
+                                                height: 60,
+                                                width: 60,
+                                                fit: BoxFit.cover),
+                                          )
+                                        : SizedBox(
+                                            width: double.infinity,
+                                            child: ElevatedButton(
+                                              style: const ButtonStyle(
+                                                  backgroundColor:
+                                                      WidgetStatePropertyAll(
+                                                          Colors.white)),
+                                              onPressed: () async {
+                                                controller.startLoading();
+                                                String message =
+                                                    await FireHelper.fireHelper
+                                                        .signIn(
+                                                            email:
+                                                                txtEmail.text,
+                                                            password:
+                                                                txtPassword
+                                                                    .text);
+                                                Get.snackbar(message, '');
+                                                if (message == 'Success') {
+                                                  FireHelper.fireHelper
+                                                      .checkUser();
+                                                  Get.offAllNamed('home');
+                                                }
+                                                controller.stopLoading();
+                                              },
+                                              child: TextUtil(
+                                                  text: 'Login',
+                                                  color: Colors.black),
+                                            ),
+                                          ),
                                   ),
                                   const Spacer(),
                                   Row(

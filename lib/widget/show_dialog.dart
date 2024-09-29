@@ -24,6 +24,7 @@ Future<bool> deleteDialog(BuildContext context, int index) async {
                     Get.back();
                     Get.snackbar('Delete', 'Success',
                         duration: const Duration(milliseconds: 1000));
+                    Get.back();
                   },
                   child: const Text(
                     'Yes',
